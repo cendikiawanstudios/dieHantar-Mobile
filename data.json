@@ -1,0 +1,89 @@
+{
+  "user": {
+    "name": "Sultan Rosdalianti",
+    "balance": 2360000,
+    "points": 5050
+  },
+  "driver": {
+    "id": "772",
+    "name": "Bang Jago",
+    "balance": 850000,
+    "status": "ONLINE"
+  },
+  "orders": [
+    {
+      "id": 1766582135673,
+      "item": "dieMOTOR [Standard]",
+      "price": 15000,
+      "status": "COMPLETED",
+      "time": "01:15 PM"
+    },
+    {
+      "id": 1766582300018,
+      "item": "dieMOBIL [Standard]",
+      "price": 15000,
+      "status": "COMPLETED",
+      "time": "01:18 PM"
+    },
+    {
+      "id": 1766582492436,
+      "item": "dieMOTOR [Standard]",
+      "price": 15000,
+      "status": "COMPLETED",
+      "time": "01:21 PM"
+    },
+    {
+      "id": 1766582496434,
+      "item": "dieMOTOR [Standard]",
+      "price": 15000,
+      "status": "COMPLETED",
+      "time": "01:21 PM"
+    },
+    {
+      "id": 1766582510795,
+      "item": "dieMOTOR [Sultan Class]",
+      "price": 25000,
+      "status": "PENDING",
+      "time": "01:21 PM"
+    },
+    {
+      "id": 1766582515657,
+      "item": "dieMOBIL [Sultan Class]",
+      "price": 25000,
+      "status": "PENDING",
+      "time": "01:21 PM"
+    },
+    {
+      "id": 1766582518401,
+      "item": "dieRODA-TIGA [Standard]",
+      "price": 15000,
+      "status": "PENDING",
+      "time": "01:21 PM"
+    },
+    {
+      "id": 1766583476697,
+      "item": "dieMOTOR [Standard]",
+      "price": 15000,
+      "status": "PENDING",
+      "time": "01:37 PM"
+    }
+  ],
+  "chats": [
+    {
+      "sender": "System",
+      "text": "⭐ Sultan memberi 3 bintang!",
+      "time": "Now"
+    }
+  ],
+  "reviews": [
+    {
+      "rating": 3,
+      "time": "2025-12-24T13:34:29.547Z"
+    }
+  ],
+  "system": {
+    "maintenance": "OFF",
+    "version": "5.5",
+    "total_transactions": 0
+  }
+}

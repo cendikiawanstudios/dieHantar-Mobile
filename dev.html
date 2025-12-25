@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>dieHantar - Master Console</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap');
+        
+        /* FIX SCROLL: Body Kaku, Konten Lincah */
+        html, body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            -webkit-tap-highlight-color: transparent; 
+            background: #f9fafb;
+            height: 100%;
+            overflow: hidden; 
+        }
+
+        /* Area Scroll Utama (Target Pull to Refresh) */
+        .scroll-container {
+            flex: 1;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            scroll-behavior: smooth;
+        }
+
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        /* Premium UI Elements */
+        .console-card { background: white; border: 1px solid #f1f1f1; box-shadow: 0 10px 30px rgba(0,0,0,0.02); }
+        @keyframes pulse-red { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.7; transform: scale(0.98); } }
+        .maint-active { animation: pulse-red 2s infinite; background: #ef4444 !important; color: white !important; border-color: #dc2626 !important; }
+        
+        /* Page Transition */
+        .fade-in-up { animation: fadeInUp 0.4s ease-out forwards; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body class="flex justify-center items-center">
+
+    <div class="flex flex-col w-full h-screen max-w-md bg-[#f9fafb] shadow-2xl relative overflow-hidden">
+
+        <header class="bg-zinc-950 p-8 rounded-b-[4rem] shadow-2xl relative overflow-hidden flex-shrink-0 z-50">
+            <div class="absolute -top-10 -right-10 w-32 h-32 bg-orange-600/10 rounded-full animate-pulse"></div>
+            <div class="flex justify-between items-start relative z-10">
+                <div>
+                    <h1 class="text-white text-xl font-black italic tracking-tighter uppercase leading-none">Master_Console<span class="text-orange-500">_v4.1</span></h1>
+                    <p class="text-zinc-500 text-[8px] font-bold uppercase tracking-[0.3em] mt-2">Authorized: Studio Indragiri</p>
+                </div>
+                <div class="text-right">
+                    <p id="dev-clock" class="text-white font-black text-sm tracking-widest leading-none mb-1">00:00:00</p>
+                    <div class="flex items-center gap-1.5 justify-end">
+                        <div class="w-1.5 h-1.5 bg-green-500 rounded-full animate-ping"></div>
+                        <p class="text-[7px] text-zinc-500 uppercase font-black">Sync_Active</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-6 flex gap-2">
+                <div class="bg-white/5 border border-white/10 px-3 py-1.5 rounded-full flex items-center gap-2">
+                    <span id="maint-text" class="text-[8px] text-zinc-400 font-black uppercase tracking-widest leading-none">Maintenance: OFF</span>
+                </div>
+                <div class="bg-white/5 border border-white/10 px-3 py-1.5 rounded-full flex items-center gap-2">
+                    <span class="text-[8px] text-orange-500 font-black uppercase tracking-widest italic leading-none">Root_Access</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="px-6 -mt-8 relative z-20 grid grid-cols-2 gap-3 flex-shrink-0">
+            <div class="bg-white p-5 rounded-[2.5rem] shadow-xl border border-gray-100">
+                <p class="text-[7px] font-black text-gray-400 uppercase tracking-widest mb-1 leading-none">Total_diePay_Pool</p>
+                <h2 id="stat-balance" class="text-base font-black text-zinc-900 tracking-tight">Rp 0</h2>
+            </div>
+            <div class="bg-white p-5 rounded-[2.5rem] shadow-xl border border-gray-100">
+                <p class="text-[7px] font-black text-gray-400 uppercase tracking-widest mb-1 leading-none">Driver_Wallet_Accum</p>
+                <h2 id="stat-wallet" class="text-base font-black text-orange-600 tracking-tight">Rp 0</h2>
+            </div>
+        </div>
+
+        <main id="dev-scroll-container" class="scroll-container no-scrollbar p-6 space-y-6">
+            
+            <section class="console-card p-6 rounded-[3rem] fade-in-up">
+                <div class="flex items-center gap-2 mb-4">
+                    <i class="fas fa-power-off text-orange-500 text-xs"></i>
+                    <h3 class="text-[9px] font-black text-zinc-900 uppercase tracking-[0.2em]">Global_Control</h3>
+                </div>
+                <button onclick="toggleMaintenance()" id="maint-btn" class="w-full py-5 bg-zinc-50 border border-zinc-200 text-zinc-900 rounded-[1.8rem] font-black uppercase italic text-[10px] shadow-sm active:scale-95 transition-all">
+                    Switch Maintenance Mode
+                </button>
+            </section>
+
+            <section class="space-y-4 fade-in-up">
+                <div class="flex items-center gap-2 px-2">
+                    <i class="fas fa-id-card text-orange-500 text-xs"></i>
+                    <h3 class="text-[9px] font-black text-zinc-400 uppercase tracking-[0.2em]">Live_Unit_Monitor</h3>
+                </div>
+                <div id="dev-monitoring-profile"></div>
+            </section>
+
+            <section class="console-card p-6 rounded-[3rem] fade-in-up">
+                <div class="flex items-center gap-2 mb-4">
+                    <i class="fas fa-bolt text-orange-500 text-xs"></i>
+                    <h3 class="text-[9px] font-black text-zinc-900 uppercase tracking-[0.2em]">Database_Modder</h3>
+                </div>
+                <div class="space-y-3">
+                    <input id="inject-amount" type="number" placeholder="Enter Amount (Rp)..." class="w-full bg-zinc-50 rounded-2xl px-6 py-4 text-xs font-bold outline-none focus:ring-2 focus:ring-orange-500 border-none text-zinc-900">
+                    <div class="grid grid-cols-2 gap-2">
+                        <button onclick="injectMoney('user')" class="py-4 bg-zinc-950 text-white rounded-2xl font-black text-[9px] uppercase active:scale-95">Inject User</button>
+                        <button onclick="injectMoney('driver')" class="py-4 bg-zinc-950 text-white rounded-2xl font-black text-[9px] uppercase active:scale-95">Inject Driver</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="console-card p-6 rounded-[3rem] fade-in-up">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-[9px] font-black text-zinc-900 uppercase tracking-[0.2em]">Txn_Log_Cluster</h3>
+                    <span class="text-[7px] bg-green-100 text-green-600 px-2 py-0.5 rounded font-black">STREAMING</span>
+                </div>
+                <div id="dev-orders" class="space-y-3 max-h-64 overflow-y-auto no-scrollbar"></div>
+            </section>
+
+            <section class="bg-zinc-950 p-6 rounded-[3rem] shadow-2xl fade-in-up">
+                <div class="flex items-center gap-2 mb-4 text-white">
+                    <i class="fas fa-satellite-dish text-orange-500 text-xs"></i>
+                    <h3 class="text-[9px] font-black uppercase tracking-[0.2em]">Intercepted_Comm</h3>
+                </div>
+                <div id="dev-chats" class="space-y-4 max-h-64 overflow-y-auto no-scrollbar"></div>
+            </section>
+
+            <div id="dev-logs" class="bg-black/5 p-5 rounded-[2rem] font-mono text-[7px] text-zinc-400 space-y-1">
+                <p>> [SYSTEM] Master core v4.1 initialized...</p>
+                <p>> [INFO] Pull to Refresh attached to #dev-scroll-container</p>
+            </div>
+
+        </main>
+
+        <div class="fixed bottom-6 right-6 z-[100]">
+            <button onclick="location.reload()" class="w-12 h-12 bg-zinc-900 text-orange-500 rounded-full shadow-2xl flex items-center justify-center active:rotate-180 transition-transform duration-500 border border-zinc-800">
+                <i class="fas fa-sync-alt text-xs"></i>
+            </button>
+        </div>
+
+    </div>
+
+    <script src="shared-components.js"></script>
+
+    <script>
+        const MASTER_EMAIL = 'cendikiawanstudioindragiri@gmail.com';
+        if (localStorage.getItem('userEmail') !== MASTER_EMAIL) {
+            window.location.href = 'login.html';
+        }
+
+        let isMaint = false;
+        let lastOrderCount = 0;
+
+        function addLog(msg) {
+            const box = document.getElementById('dev-logs');
+            const p = document.createElement('p');
+            p.innerHTML = `> [${new Date().toLocaleTimeString()}] ${msg}`;
+            box.prepend(p);
+            if(box.children.length > 15) box.lastElementChild.remove();
+        }
+
+        async function injectMoney(target) {
+            const amount = document.getElementById('inject-amount').value;
+            if(!amount) return;
+            const res = await fetch('/api/admin/inject', {
+                method: 'POST', headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({ target, amount })
+            });
+            if((await res.json()).success) {
+                addLog(`CRITICAL: INJECTED Rp ${amount} TO ${target.toUpperCase()}`);
+                document.getElementById('inject-amount').value = '';
+                masterSync();
+            }
+        }
+
+        async function toggleMaintenance() {
+            isMaint = !isMaint;
+            await fetch('/api/admin/system', {
+                method: 'POST', headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({ status: isMaint ? 'ON' : 'OFF' })
+            });
+            updateMaintUI();
+        }
+
+        function updateMaintUI() {
+            const btn = document.getElementById('maint-btn');
+            const text = document.getElementById('maint-text');
+            if(isMaint) {
+                btn.classList.add('maint-active');
+                btn.innerText = "MAINTENANCE: ACTIVE";
+                text.innerText = "Maintenance: ON";
+                text.className = "text-[8px] text-red-500 font-black uppercase tracking-widest";
+            } else {
+                btn.classList.remove('maint-active');
+                btn.innerText = "Switch Maintenance Mode";
+                text.innerText = "Maintenance: OFF";
+                text.className = "text-[8px] text-zinc-400 font-black uppercase tracking-widest";
+            }
+        }
+
+        async function masterSync() {
+            try {
+                const res = await fetch('/api/data');
+                const d = await res.json();
+                
+                document.getElementById('stat-balance').innerText = 'Rp ' + d.user.balance.toLocaleString('id-ID');
+                document.getElementById('stat-wallet').innerText = 'Rp ' + d.driver.wallet.toLocaleString('id-ID');
+                document.getElementById('dev-clock').innerText = new Date().toLocaleTimeString('id-ID');
+
+                // Shared Component Call
+                dieHantarUI.renderDriverCard('dev-monitoring-profile', d.driver);
+
+                // Orders
+                document.getElementById('dev-orders').innerHTML = d.orders.slice().reverse().map(o => `
+                    <div class="flex justify-between items-center bg-zinc-50 p-4 rounded-2xl border border-zinc-100">
+                        <div>
+                            <h4 class="text-[9px] font-black uppercase text-zinc-800 leading-none mb-1">${o.item}</h4>
+                            <p class="text-[7px] text-zinc-400 font-bold">${o.time}</p>
+                        </div>
+                        <span class="text-[8px] font-black italic ${o.status === 'COMPLETED' ? 'text-green-600' : 'text-orange-600'}">${o.status}</span>
+                    </div>
+                `).join('') || '<p class="text-center text-[8px] py-10 font-bold text-zinc-300">NO DATA</p>';
+
+                // Chats
+                document.getElementById('dev-chats').innerHTML = d.chats.slice().reverse().map(c => `
+                    <div class="border-l border-orange-500/30 pl-4 py-1">
+                        <p class="text-[7px] font-black text-zinc-500 uppercase leading-none mb-1">${c.sender} • ${c.time}</p>
+                        <p class="text-[10px] italic text-zinc-100 mt-0.5">"${c.text}"</p>
+                    </div>
+                `).join('') || '<p class="text-center text-[8px] py-10 font-bold text-zinc-800">NO COMM</p>';
+
+                if(d.orders.length > lastOrderCount) {
+                    addLog("NOTIF: NEW_ORDER_STREAM_DETECTED");
+                    lastOrderCount = d.orders.length;
+                }
+            } catch (e) { console.log("Master core disconnected..."); }
+        }
+
+        // --- WINDOW ONLOAD (PTR INITIALIZATION) ---
+        window.onload = () => {
+            // AKTIFKAN PULL TO REFRESH UNTUK DEVELOPER
+            dieHantarRefresh.init('dev-scroll-container', async () => {
+                await masterSync();
+            }, '#18181b'); // Industrial Zinc Color
+
+            masterSync();
+            setInterval(masterSync, 3000);
+        };
+    </script>
+</body>
+</html>
