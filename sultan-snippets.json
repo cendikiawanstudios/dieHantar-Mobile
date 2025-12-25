@@ -1,0 +1,14 @@
+{
+  "Post Sultan": {
+    "prefix": "s-post",
+    "body": [
+      "app.post(\"/api/${1:endpoint}\", (req, res) => {",
+      "  let db = getData();",
+      "  ${0:// Logika di sini}",
+      "  saveData(db);",
+      "  res.json({ success: true });",
+      "});"
+    ],
+    "description": "Template POST Sultan"
+  }
+}

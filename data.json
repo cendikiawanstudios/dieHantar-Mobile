@@ -1,7 +1,7 @@
 {
   "user": {
-    "name": "Sultan Rosdalianti",
-    "balance": 2360000,
+    "name": "Rama Kirana",
+    "balance": 10000,
     "points": 5050
   },
   "driver": {
@@ -66,6 +66,229 @@
       "price": 15000,
       "status": "PENDING",
       "time": "01:37 PM"
+    },
+    {
+      "id": 1766651082784,
+      "item": "dieMOTOR [Standard]",
+      "price": 15000,
+      "status": "PENDING",
+      "time": "08:24 AM"
+    },
+    {
+      "id": 1766651085032,
+      "item": "dieMOTOR [Standard]",
+      "price": 15000,
+      "status": "PENDING",
+      "time": "08:24 AM"
+    },
+    {
+      "id": 1766652765941,
+      "item": "dieMOTOR [Standard]",
+      "price": 15000,
+      "status": "PENDING",
+      "time": "08:52 AM"
+    },
+    {
+      "id": 1766652935998,
+      "item": "dieMOTOR [Standard]",
+      "price": 15000,
+      "status": "PENDING",
+      "time": "08:55 AM"
+    },
+    {
+      "id": 1766652937667,
+      "item": "dieMOBIL [Standard]",
+      "price": 15000,
+      "status": "PENDING",
+      "time": "08:55 AM"
+    },
+    {
+      "id": 1766652939288,
+      "item": "dieRODA-TIGA [Standard]",
+      "price": 15000,
+      "status": "PENDING",
+      "time": "08:55 AM"
+    },
+    {
+      "id": 1766653209473,
+      "item": "dieMOTOR [Standard]",
+      "price": 15000,
+      "status": "PENDING",
+      "time": "09:00 AM"
+    },
+    {
+      "id": 1766653211967,
+      "item": "dieMOTOR [Standard]",
+      "price": 15000,
+      "status": "PENDING",
+      "time": "09:00 AM"
+    },
+    {
+      "id": 1766653213388,
+      "item": "dieMOTOR [Standard]",
+      "price": 15000,
+      "status": "PENDING",
+      "time": "09:00 AM"
+    },
+    {
+      "id": 1766653214707,
+      "item": "dieMOTOR [Standard]",
+      "price": 15000,
+      "status": "PENDING",
+      "time": "09:00 AM"
+    },
+    {
+      "id": 1766653271923,
+      "item": "dieMOTOR [Standard]",
+      "price": 15000,
+      "status": "PENDING",
+      "time": "09:01 AM"
+    },
+    {
+      "id": 1766653273619,
+      "item": "dieMOTOR [Standard]",
+      "price": 15000,
+      "status": "PENDING",
+      "time": "09:01 AM"
+    },
+    {
+      "id": 1766653275097,
+      "item": "dieMOTOR [Standard]",
+      "price": 15000,
+      "status": "PENDING",
+      "time": "09:01 AM"
+    },
+    {
+      "id": 1766653276103,
+      "item": "dieMOTOR [Standard]",
+      "price": 15000,
+      "status": "PENDING",
+      "time": "09:01 AM"
+    },
+    {
+      "id": 1766653276823,
+      "item": "dieMOTOR [Sultan]",
+      "price": 25000,
+      "status": "PENDING",
+      "time": "09:01 AM"
+    },
+    {
+      "id": 1766653277856,
+      "item": "dieMOTOR [Sultan]",
+      "price": 25000,
+      "status": "PENDING",
+      "time": "09:01 AM"
+    },
+    {
+      "id": 1766653278617,
+      "item": "dieMOBIL [Standard]",
+      "price": 15000,
+      "status": "PENDING",
+      "time": "09:01 AM"
+    },
+    {
+      "id": 1766653346725,
+      "item": "dieKIRIM [Sultan]",
+      "price": 25000,
+      "status": "PENDING",
+      "time": "09:02 AM"
+    },
+    {
+      "id": 1766653347827,
+      "item": "dieKIRIM [Sultan]",
+      "price": 25000,
+      "status": "PENDING",
+      "time": "09:02 AM"
+    },
+    {
+      "id": 1766653349016,
+      "item": "dieKIRIM [Sultan]",
+      "price": 25000,
+      "status": "PENDING",
+      "time": "09:02 AM"
+    },
+    {
+      "id": 1766653349850,
+      "item": "dieBELANJA [Sultan]",
+      "price": 25000,
+      "status": "PENDING",
+      "time": "09:02 AM"
+    },
+    {
+      "id": 1766653350886,
+      "item": "dieWASH [Sultan]",
+      "price": 25000,
+      "status": "PENDING",
+      "time": "09:02 AM"
+    },
+    {
+      "id": 1766653649663,
+      "item": "dieMOTOR [Standard]",
+      "price": 15000,
+      "status": "PENDING",
+      "time": "09:07 AM"
+    },
+    {
+      "id": 1766653650879,
+      "item": "dieMOTOR [Standard]",
+      "price": 15000,
+      "status": "PENDING",
+      "time": "09:07 AM"
+    },
+    {
+      "id": 1766653678290,
+      "item": "dieMOTOR [Standard]",
+      "price": 15000,
+      "status": "PENDING",
+      "time": "09:07 AM"
+    },
+    {
+      "id": 1766655654659,
+      "item": "dieMOTOR [Standard]",
+      "price": 15000,
+      "origin": "N/A",
+      "destination": "Alamat Default Sultan",
+      "payment": "dieHantar Pay",
+      "status": "PENDING",
+      "time": "09:40 AM"
+    },
+    {
+      "id": 1766655661156,
+      "item": "dieMOBIL [Standard]",
+      "price": 15000,
+      "origin": "N/A",
+      "destination": "Alamat Default Sultan",
+      "payment": "dieHantar Pay",
+      "status": "PENDING",
+      "time": "09:41 AM"
+    },
+    {
+      "id": 1766655662598,
+      "item": "dieMOTOR [Standard]",
+      "price": 15000,
+      "origin": "N/A",
+      "destination": "Alamat Default Sultan",
+      "payment": "dieHantar Pay",
+      "status": "PENDING",
+      "time": "09:41 AM"
+    },
+    {
+      "id": 1766662382821,
+      "item": "dieMOBIL [Standard]",
+      "price": 15000,
+      "origin": "pulau burung ",
+      "destination": "Guntung",
+      "paymentMethod": "Bayar diePotongGajian",
+      "employeeInfo": {
+        "name": "Rama Kirana ",
+        "nik": "Pra01697",
+        "fix": "52530",
+        "pt": "PT. RIAU SAKTI UNITED PLANTATIONS"
+      },
+      "status": "PENDING",
+      "full_timestamp": "2025-12-25T11:33:02.821Z",
+      "time": "11:33:02 AM",
+      "date": "December 25, 2025"
     }
   ],
   "chats": [
@@ -84,6 +307,6 @@
   "system": {
     "maintenance": "OFF",
     "version": "5.5",
-    "total_transactions": 0
+    "total_transactions": 1
   }
 }
